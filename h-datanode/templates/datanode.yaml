@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: datanode 
+  labels:
+    k8s-app: datanode
+spec:
+  selector:
+    matchLabels:
+      name: datanode
+  template:
+    metadata:
+      labels:
+        name: datanode
+    spec:  
+      containers:
+      - env: 
+        - name: NAMENODE_IP
+          value: 10.99.85.186  
+        name: datanode
+        image: aryan750/hadoop-slave:v2
+
